@@ -19,13 +19,12 @@ BUILD_c_igraph=$BUILD_PATH/c_igraph/$(get_directory $URL_c_igraph)
 RECIPE_c_igraph=$RECIPES_PATH/c_igraph
 
 function prebuild_c_igraph() {
-    if [ ! -e $BUILD_c_igraph/.patched ]; then {
-            try patch $BUILD_c_igraph/src/Makefile.am $RECIPE_c_igraph/Makefile.am.patch;
-            try cp -f $RECIPE_c_igraph/arith.h $BUILD_c_igraph/src/f2c/arith.h;
-            try patch $BUILD_c_igraph/src/f2c/sysdep1.h $RECIPE_c_igraph/sysdep1.h.patch;
-            try patch $BUILD_c_igraph/src/f2c/uninit.c $RECIPE_c_igraph/uninit.c.patch;
-            touch $BUILD_c_igraph/.patched;
-        }
+    if [ ! -e $BUILD_c_igraph/.patched ]; then
+        try patch $BUILD_c_igraph/src/Makefile.am $RECIPE_c_igraph/Makefile.am.patch;
+        try cp -f $RECIPE_c_igraph/arith.h $BUILD_c_igraph/src/f2c/arith.h;
+        try patch $BUILD_c_igraph/src/f2c/sysdep1.h $RECIPE_c_igraph/sysdep1.h.patch;
+        try patch $BUILD_c_igraph/src/f2c/uninit.c $RECIPE_c_igraph/uninit.c.patch;
+        touch $BUILD_c_igraph/.patched;
     fi
 }
 
