@@ -1,0 +1,11 @@
+--- igraph-0.7.1/src/f2c/sysdep1.h	2014-04-15 09:00:46.000000000 -0400
++++ sysdep1.h	2016-02-25 19:12:55.158417264 -0500
+@@ -10,7 +10,7 @@
+ 
+ #ifdef __sun__
+ #define USE_LARGEFILE
+-#define OFF_T off64_t
++#define OFF_T long
+ #endif
+ 
+ #ifdef __linux__

@@ -1,0 +1,26 @@
+--- igraph-0.7.1/src/f2c/uninit.c	2014-04-15 09:00:46.000000000 -0400
++++ uninit.c	2016-02-25 19:22:33.244686551 -0500
+@@ -273,7 +273,6 @@
+ 
+ #if (defined(__linux__)&&(!defined(IEEE0_done)))
+ #define IEEE0_done
+-#include <fpu_control.h>
+ 
+ 
+ #ifdef __alpha__
+@@ -333,7 +332,6 @@
+      * in line with all the other architectures specified here. -- AFRB
+      */
+ #define RQD_FPU_STATE (_FPU_DEFAULT +_FPU_MASK_OM+_FPU_MASK_IM+_FPU_MASK_ZM)
+-#define RQD_FPU_MASK (_FPU_MASK_OM+_FPU_MASK_IM+_FPU_MASK_ZM)
+ 
+ #elif (defined(__arm__))
+     /* On ARM too, IEEE implies all exceptions enabled.
+@@ -349,7 +347,6 @@
+      *  * MIPS uses different MASK constant names, no idea why -- PMM
+      *   */
+ #define RQD_FPU_STATE (_FPU_DEFAULT +_FPU_MASK_O+_FPU_MASK_V+_FPU_MASK_Z)
+-#define RQD_FPU_MASK (_FPU_MASK_O+_FPU_MASK_V+_FPU_MASK_Z)
+ 
+ #elif (defined(__sparc__))
+ #define RQD_FPU_STATE (_FPU_DEFAULT +_FPU_DOUBLE+_FPU_MASK_OM+_FPU_MASK_IM+_FPU_MASK_ZM)
